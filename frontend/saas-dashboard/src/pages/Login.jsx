@@ -79,7 +79,7 @@ function Login() {
               name="email"
               required
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 text-white"
               placeholder="you@example.com"
             />
           </div>
@@ -95,7 +95,7 @@ function Login() {
                 name="password"
                 required
                 onChange={handleChange}
-                className="w-full  px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
+                className="w-full  px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 text-white"
                 placeholder="Enter your password"
               />
               <button

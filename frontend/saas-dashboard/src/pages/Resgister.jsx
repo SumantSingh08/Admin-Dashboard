@@ -75,7 +75,7 @@ function Register() {
                   message: "Minimum 3 characters",
                 },
               })}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 text-white"
               placeholder="Enter your full name"
             />
             {errors.name && (
@@ -99,7 +99,7 @@ function Register() {
                   message: "Invalid email format",
                 },
               })}
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 text-white"
               placeholder="you@example.com"
             />
             {errors.email && (
@@ -130,7 +130,7 @@ function Register() {
                       "Must include letters and numbers",
                   },
                 })}
-                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 text-white"
                 placeholder="Enter your password"
               />
               <button
