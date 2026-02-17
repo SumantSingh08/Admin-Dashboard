@@ -25,7 +25,7 @@ function Register() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/register",
+        "https://admin-dashboard-backend-u7go.onrender.com/api/auth/register",
         {
           name: data.name,
           email: data.email,
@@ -136,7 +136,7 @@ function Register() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-2 text-sm text-gray-500"
+                className="absolute right-3 top-2 text-sm text-gray-500 cursor-pointer"
               >
                 {showPassword ? "Hide" : "Show"}
               </button>
