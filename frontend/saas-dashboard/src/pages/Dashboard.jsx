@@ -50,51 +50,62 @@ function Dashboard() {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="max-w-7xl mx-auto px-4 space-y-10">
 
-      {/* Heading */}
-      <div>
-        <h1 className="text-3xl font-bold dark:text-white">
-          Dashboard Overview
-        </h1>
-        <p className="text-gray-500 dark:text-gray-400">
-          Welcome back 👋 Here’s what’s happening today.
-        </p>
+      {/* Header */}
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+
+        <div>
+          <h1 className="text-3xl md:text-4xl font-bold bg-linear-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+            Dashboard Overview
+          </h1>
+
+          <p className="text-gray-500 dark:text-gray-400 mt-2 text-sm md:text-base">
+            Welcome back 👋 Here’s a quick summary of your platform activity.
+          </p>
+        </div>
       </div>
+
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-        {/* Total Users */}
         <StatusCard
           title="Total Users"
           value={totalUsers}
+          icon="👥"
           color="blue"
+          trend="+12%"
         />
 
-        {/* Companies */}
         <StatusCard
           title="Companies"
           value={totalCompanies}
+          icon="🏢"
           color="green"
+          trend="+5%"
         />
 
-        {/* Cities */}
         <StatusCard
           title="Cities"
           value={totalCities}
+          icon="🌍"
           color="purple"
+          trend="+3%"
         />
 
-        {/* Domains */}
         <StatusCard
           title="Domains"
           value={totalDomains}
+          icon="🌐"
           color="orange"
+          trend="+8%"
         />
 
       </div>
+
     </div>
+
   );
 }
 

@@ -67,39 +67,57 @@ function Users() {
     return <div className="text-center text-red-500 p-10">{error}</div>;
 
   return (
-    <div className="space-y-6">
+    <div className="max-w-7xl mx-auto space-y-8 px-4">
 
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:justify-between gap-4">
-        <h1 className="text-2xl font-bold dark:text-white">
-          Users Management
-        </h1>
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
 
-        <div className="flex flex-col sm:flex-row gap-3">
-          <input
-            placeholder="Search..."
-            className="border p-2 rounded-md"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
+        <div>
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+            Users Management
+          </h1>
+          <p className="text-gray-500 dark:text-gray-400 mt-1">
+            Manage, search and view user profiles
+          </p>
+        </div>
 
+        {/* Controls */}
+        <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+
+          {/* Search */}
+          <div className="relative">
+            <input
+              placeholder="Search users..."
+              className="pl-10 pr-4 py-2 w-full sm:w-64 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 focus:ring-2 focus:ring-blue-500 outline-none transition"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <span className="absolute left-3 top-2.5 text-gray-400">
+              🔍
+            </span>
+          </div>
+
+          {/* Sort Button */}
           <button
             onClick={() =>
               setSortOrder(sortOrder === "asc" ? "desc" : "asc")
             }
-            className="bg-blue-600 text-white px-4 py-2 rounded-md cursor-pointer"
+            className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-5 py-2 rounded-lg shadow hover:shadow-lg transition font-medium"
           >
-            {sortOrder === "asc" ? "A–Z" : "Z–A"}
+            {sortOrder === "asc" ? "Sort A–Z" : "Sort Z–A"}
           </button>
 
           <ViewToggle view={view} setView={setView} />
         </div>
       </div>
 
+      {/* TABLE VIEW */}
       {view === "table" && (
-        <div className="overflow-x-auto bg-white dark:bg-gray-800 rounded-xl shadow">
+        <div className="overflow-x-auto bg-white dark:bg-gray-800 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700">
+
           <table className="min-w-full text-sm">
-            <thead className="bg-gray-50 dark:bg-gray-700">
+
+            <thead className="bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 uppercase text-xs tracking-wider">
               <tr>
                 <th className="p-4 text-left">Name</th>
                 <th className="p-4 text-left">Email</th>
@@ -112,17 +130,24 @@ function Users() {
               {currentUsers.map((user) => (
                 <tr
                   key={user.id}
-                  className="border-t hover:bg-gray-50 dark:hover:bg-gray-700 transition"
+                  className="border-t border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition"
                 >
-                  <td className="p-4">{user.name}</td>
-                  <td className="p-4">{user.email}</td>
-                  <td className="p-4">{user.company.name}</td>
+                  <td className="p-4 font-medium dark:text-white">
+                    {user.name}
+                  </td>
 
-                  {/* Details Column */}
+                  <td className="p-4 text-gray-600 dark:text-gray-300">
+                    {user.email}
+                  </td>
+
+                  <td className="p-4 text-gray-600 dark:text-gray-300">
+                    {user.company.name}
+                  </td>
+
                   <td className="p-4">
                     <button
                       onClick={() => navigate(`/users/${user.id}`)}
-                      className="text-blue-600 hover:text-blue-800 font-medium hover:underline cursor-pointer"
+                      className="text-blue-600 hover:text-indigo-600 font-medium transition"
                     >
                       View Profile →
                     </button>
@@ -132,63 +157,82 @@ function Users() {
 
               {currentUsers.length === 0 && (
                 <tr>
-                  <td
-                    colSpan="4"
-                    className="p-6 text-center text-gray-500"
-                  >
+                  <td colSpan="4" className="p-8 text-center text-gray-500">
                     No users found
                   </td>
                 </tr>
               )}
             </tbody>
+
           </table>
         </div>
       )}
 
-
-      {/* Card View */}
+      {/* CARD VIEW */}
       {view === "card" && (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
           {currentUsers.map((user) => (
             <div
               key={user.id}
               onClick={() => navigate(`/users/${user.id}`)}
-              className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow hover:shadow-lg transition cursor-pointer"
+              className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:-translate-y-1 transition cursor-pointer"
             >
-              <h3 className="font-bold text-lg dark:text-white">
-                {user.name}
-              </h3>
-              <p className="text-gray-500 text-sm">{user.email}</p>
-              <p className="text-sm mt-2">{user.company.name}</p>
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 flex items-center justify-center text-white font-bold">
+                  {user.name.charAt(0)}
+                </div>
+
+                <div>
+                  <h3 className="font-semibold text-lg dark:text-white">
+                    {user.name}
+                  </h3>
+                  <p className="text-gray-500 text-sm">
+                    {user.email}
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-sm text-gray-600 dark:text-gray-300">
+                {user.company.name}
+              </p>
+
+              <div className="mt-4 text-blue-600 font-medium text-sm">
+                View Profile →
+              </div>
             </div>
           ))}
+
         </div>
       )}
 
-      {/* Pagination */}
-      <div className="flex justify-center gap-4 items-center">
+      {/* PAGINATION */}
+      <div className="flex justify-center items-center gap-4 pt-6">
+
         <button
           disabled={currentPage === 1}
           onClick={() => setCurrentPage(currentPage - 1)}
-          className="px-3 py-1 border rounded disabled:opacity-50 cursor-pointer"
+          className="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 transition disabled:opacity-40"
         >
-          Prev
+          ← Previous
         </button>
 
-        <span>
+        <span className="text-gray-600 dark:text-gray-300 font-medium">
           Page {currentPage} of {totalPages}
         </span>
 
         <button
           disabled={currentPage === totalPages}
           onClick={() => setCurrentPage(currentPage + 1)}
-          className="px-3 py-1 border rounded disabled:opacity-50 cursor-pointer"
+          className="px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 transition disabled:opacity-40"
         >
-          Next
+          Next →
         </button>
+
       </div>
 
     </div>
+
   );
 }
 

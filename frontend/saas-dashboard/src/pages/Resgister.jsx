@@ -148,13 +148,13 @@ function Register() {
             )}
           </div>
 
-          
+
 
           {/* Submit */}
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition disabled:opacity-60"
+            className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition disabled:opacity-60 cursor-pointer"
           >
             {loading ? "Creating Account..." : "Register"}
           </button>

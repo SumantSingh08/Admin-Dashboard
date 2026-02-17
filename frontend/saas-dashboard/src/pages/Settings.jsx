@@ -60,34 +60,54 @@ function Settings() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8">
+    <div className="max-w-5xl mx-auto space-y-10">
 
-      {/* Header */}
-      <div>
-        <h1 className="text-3xl font-bold dark:text-white">
-          Settings
-        </h1>
-        <p className="text-gray-500 dark:text-gray-400">
-          Manage your profile and preferences
-        </p>
+      {/* Page Header */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold dark:text-white">
+            Settings
+          </h1>
+          <p className="text-gray-500 dark:text-gray-400 mt-1">
+            Manage your profile and preferences
+          </p>
+        </div>
+
+        <span className="px-3 py-1 text-xs font-medium bg-blue-100 text-blue-600 rounded-full">
+          Account
+        </span>
       </div>
 
-      {/* Settings Card */}
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow p-8">
+      {/* Main Card */}
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
 
-        <form onSubmit={handleSave} className="space-y-6">
+        <form onSubmit={handleSave}>
 
           {/* Profile Section */}
-          <div>
-            <h2 className="text-xl font-semibold mb-4 dark:text-white">
-              Profile Information
-            </h2>
+          <div className="p-10 space-y-8">
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="flex items-center gap-6">
+
+              {/* Avatar */}
+              <div className="w-20 h-20 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white flex items-center justify-center text-2xl font-bold shadow-md">
+                {profile.name?.charAt(0) || "U"}
+              </div>
+
+              <div>
+                <h2 className="text-xl font-semibold dark:text-white">
+                  Profile Information
+                </h2>
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  Update your personal details
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
               {/* Name */}
               <div>
-                <label className="block text-sm font-medium mb-1 dark:text-gray-300">
+                <label className="block text-sm font-medium mb-2 dark:text-gray-300">
                   Full Name
                 </label>
                 <input
@@ -95,22 +115,22 @@ function Settings() {
                   name="name"
                   value={profile.name}
                   onChange={handleChange}
-                  className="w-full border p-2 rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
+                  className="w-full border border-gray-300 dark:border-gray-600 bg-transparent px-4 py-2 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
                   placeholder="Enter your name"
                 />
               </div>
 
               {/* Email */}
               <div>
-                <label className="block text-sm font-medium mb-1 dark:text-gray-300">
-                  Email
+                <label className="block text-sm font-medium mb-2 dark:text-gray-300">
+                  Email Address
                 </label>
                 <input
                   type="email"
                   name="email"
                   value={profile.email}
                   onChange={handleChange}
-                  className="w-full border p-2 rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
+                  className="w-full border border-gray-300 dark:border-gray-600 bg-transparent px-4 py-2 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
                   placeholder="Enter your email"
                 />
               </div>
@@ -118,73 +138,86 @@ function Settings() {
             </div>
 
             {/* Bio */}
-            <div className="mt-6">
-              <label className="block text-sm font-medium mb-1 dark:text-gray-300">
+            <div>
+              <label className="block text-sm font-medium mb-2 dark:text-gray-300">
                 Bio
               </label>
               <textarea
                 name="bio"
                 value={profile.bio}
                 onChange={handleChange}
-                rows="3"
-                className="w-full border p-2 rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
+                rows="4"
+                className="w-full border border-gray-300 dark:border-gray-600 bg-transparent px-4 py-2 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
                 placeholder="Write something about yourself..."
               />
             </div>
           </div>
 
-          {/* Theme Section */}
-          <div className="border-t pt-6">
-            <h2 className="text-xl font-semibold mb-4 dark:text-white">
-              Appearance
-            </h2>
+          {/* Divider */}
+          <div className="border-t border-gray-200 dark:border-gray-700"></div>
 
-            <div className="flex items-center justify-between bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+          {/* Appearance Section */}
+          <div className="p-10 space-y-6">
+
+            <div>
+              <h2 className="text-xl font-semibold dark:text-white">
+                Appearance
+              </h2>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                Customize how your dashboard looks
+              </p>
+            </div>
+
+            <div className="flex items-center justify-between bg-gray-50 dark:bg-gray-700 p-6 rounded-xl">
               <div>
                 <p className="font-medium dark:text-white">
                   Dark Mode
                 </p>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
-                  Toggle between light and dark theme
+                  Switch between light and dark themes
                 </p>
               </div>
 
               <button
                 type="button"
                 onClick={toggleTheme}
-                className={`w-12 h-6 flex items-center rounded-full p-1 transition ${darkMode ? "bg-blue-600" : "bg-gray-300"
+                className={`relative w-14 h-7 rounded-full transition duration-300 ${darkMode ? "bg-blue-600" : "bg-gray-300"
                   }`}
               >
-                <div
-                  className={`bg-white w-4 h-4 rounded-full shadow-md transform transition ${darkMode ? "translate-x-6" : ""
+                <span
+                  className={`absolute top-1 left-1 w-5 h-5 bg-white rounded-full shadow-md transform transition duration-300 ${darkMode ? "translate-x-7" : ""
                     }`}
-                ></div>
+                />
               </button>
             </div>
           </div>
 
-          {/* Success Message */}
-          {success && (
-            <div className="bg-green-100 text-green-600 p-3 rounded text-sm">
-              {success}
-            </div>
-          )}
+          {/* Divider */}
+          <div className="border-t border-gray-200 dark:border-gray-700"></div>
 
-          {/* Save Button */}
-          <div className="flex justify-end">
+          {/* Footer Actions */}
+          <div className="p-6 bg-gray-50 dark:bg-gray-900 flex justify-between items-center">
+
+            {success && (
+              <p className="text-green-600 text-sm">
+                {success}
+              </p>
+            )}
+
             <button
               type="submit"
               disabled={loading}
-              className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition disabled:opacity-60"
+              className="bg-blue-600 text-white px-8 py-2 rounded-lg hover:bg-blue-700 transition shadow-md disabled:opacity-60"
             >
               {loading ? "Saving..." : "Save Changes"}
             </button>
+
           </div>
 
         </form>
       </div>
-
     </div>
+
   );
 }
 

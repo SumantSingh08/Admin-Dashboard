@@ -1,28 +1,36 @@
-function StatusCard({ title, value, color }) {
-
-  const colorClasses = {
-    blue: "bg-blue-100 text-blue-600",
-    green: "bg-green-100 text-green-600",
-    purple: "bg-purple-100 text-purple-600",
-    orange: "bg-orange-100 text-orange-600",
+function StatusCard({ title, value, icon, color, trend }) {
+  const colors = {
+    blue: "from-blue-500 to-blue-600",
+    green: "from-green-500 to-green-600",
+    purple: "from-purple-500 to-purple-600",
+    orange: "from-orange-500 to-orange-600",
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 shadow-md rounded-xl p-6 hover:shadow-lg transition">
+    <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
 
-      <div className="flex justify-between items-center">
+      <div className="flex items-center justify-between">
+
+        {/* Left Content */}
         <div>
           <p className="text-sm text-gray-500 dark:text-gray-400">
             {title}
           </p>
-          <h2 className="text-3xl font-bold mt-2 dark:text-white">
+
+          <h2 className="text-2xl font-bold mt-1 dark:text-white">
             {value}
           </h2>
+
+          <p className="text-xs text-green-500 mt-2 font-medium">
+            {trend} this month
+          </p>
         </div>
 
-        <div className={`p-3 rounded-full ${colorClasses[color]}`}>
-          📊
+        {/* Icon */}
+        <div className={`w-12 h-12 rounded-xl bg-linear-to-r ${colors[color]} flex items-center justify-center text-white text-xl shadow-md`}>
+          {icon}
         </div>
+
       </div>
 
     </div>
