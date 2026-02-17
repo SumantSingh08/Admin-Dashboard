@@ -89,7 +89,7 @@ function Settings() {
             <div className="flex items-center gap-6">
 
               {/* Avatar */}
-              <div className="w-20 h-20 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white flex items-center justify-center text-2xl font-bold shadow-md">
+              <div className="w-20 h-20 rounded-full bg-linear-to-r from-blue-600 to-indigo-600 text-white flex items-center justify-center text-2xl font-bold shadow-md">
                 {profile.name?.charAt(0) || "U"}
               </div>
 

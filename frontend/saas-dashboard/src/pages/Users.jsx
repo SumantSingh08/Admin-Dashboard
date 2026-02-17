@@ -73,7 +73,7 @@ function Users() {
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
 
         <div>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+          <h1 className="text-3xl font-bold bg-linear-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
             Users Management
           </h1>
           <p className="text-gray-500 dark:text-gray-400 mt-1">
@@ -102,7 +102,7 @@ function Users() {
             onClick={() =>
               setSortOrder(sortOrder === "asc" ? "desc" : "asc")
             }
-            className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-5 py-2 rounded-lg shadow hover:shadow-lg transition font-medium"
+            className="bg-linear-to-r from-blue-600 to-indigo-600 text-white px-5 py-2 rounded-lg shadow hover:shadow-lg transition font-medium"
           >
             {sortOrder === "asc" ? "Sort A–Z" : "Sort Z–A"}
           </button>
@@ -179,7 +179,7 @@ function Users() {
               className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:-translate-y-1 transition cursor-pointer"
             >
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-indigo-500 flex items-center justify-center text-white font-bold">
+                <div className="w-12 h-12 rounded-full bg-linear-to-r from-blue-500 to-indigo-500 flex items-center justify-center text-white font-bold">
                   {user.name.charAt(0)}
                 </div>
 
